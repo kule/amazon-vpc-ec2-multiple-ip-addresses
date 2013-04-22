@@ -69,14 +69,14 @@ Here is a quick guide how to setup multiple IP addresses that point to a single 
     ```diff
     127.0.0.1 localhost
 
-    +# 10.0.0.79
-    +55.123.456.700 getprove.com getprove
-
-    +# 10.0.0.80
-    +55.123.456.800 teelaunch.com teelaunch
-
-    +# 10.0.0.81
-    +55.123.456.900 wakeup.io wakeup
+    +# 55.123.456.700
+    +10.0.0.79 getprove.com getprove
+    +
+    +# 55.123.456.800
+    +10.0.0.80 teelaunch.com teelaunch
+    +
+    +# 55.123.456.900
+    +10.0.0.81 wakeup.io wakeup
 
     # The following lines are desirable for IPv6 capable hosts
     ::1 ip6-localhost ip6-loopback
@@ -93,6 +93,12 @@ Here is a quick guide how to setup multiple IP addresses that point to a single 
 
     **Node and Express**
 
+    ```bash
+    mkdir ~/test
+    cd ~/test
+    vim app.js
+    ```
+
     ```js
     var express = require('express')
     var app = express()
@@ -100,6 +106,10 @@ Here is a quick guide how to setup multiple IP addresses that point to a single 
       res.send('hello from getprove http server')
     })
     app.listen(80, 'getprove')
+    ```
+
+    ```bash
+    sudo /home/ubuntu/opt/node/bin/node app
     ```
 
     Then you would visit <http://55.123.456.700> or <http://getprove.com> if you had your DNS records setup pointing `getprove.com` to `55.123.456.700`.
